@@ -1,0 +1,12 @@
+{
+  "cowboy_pos": 5,
+  "bandit_pos": 0,
+  "bomb_pos": -1,
+  "bomb_timer": 0,
+  "steps_to_bomb": 4,
+  "step_count": 0,
+  "available_space": 6,
+  "game_over": false,
+  "last_winner": null,
+  "history": []
+}
