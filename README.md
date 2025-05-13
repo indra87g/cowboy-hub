@@ -8,13 +8,13 @@ Ini adalah permainan Koboy sederhana yang berjalan di GitHub melalui GitHub Acti
 
 ```
 Wilayah Koboy:
-. . . . K .
+. . . K . .
 
 Wilayah Penjahat:
 P . . . . .
 ```
 
-Langkah: 8 | Titik tersedia: 6
+Langkah: 9 | Titik tersedia: 6
 
 ## Cara Bermain
 
@@ -36,6 +36,7 @@ Langkah: 8 | Titik tersedia: 6
 
 (Histori akan direset setelah 50 entri)
 
+- @rafiedotid (Koboy) - Kiri
 - @sweeefff (Koboy) - Kanan
 - @MrTakt (Penjahat) - Kiri
 - @TheFahmi (Koboy) - Kiri
