@@ -27,14 +27,14 @@ jobs:
         run: |
           python .github/scripts/game_processor.py "${{ github.event.issue.title }}" "${{ github.event.issue.user.login }}"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Commit changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add README.md game_state.json
-          git commit -m "Update game state from issue #${{ github.event.issue.number }}" || echo "No changes to commit"
+          git commit -m "update game state from issue #${{ github.event.issue.number }}" || echo "No changes to commit"
           git push
 
       - name: Close issue
