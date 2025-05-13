@@ -1,14 +1,19 @@
 {
   "cowboy_pos": 4,
-  "bandit_pos": 5,
+  "bandit_pos": 2,
   "bomb_pos": -1,
   "bomb_timer": 0,
-  "steps_to_bomb": 26,
-  "step_count": 24,
+  "steps_to_bomb": 28,
+  "step_count": 25,
   "available_space": 6,
   "game_over": false,
   "last_winner": "Koboy",
   "history": [
+    {
+      "user": "Zaxerion",
+      "role": "Penjahat",
+      "move": "Kiri"
+    },
     {
       "user": "Zaxerion",
       "role": "Koboy",
