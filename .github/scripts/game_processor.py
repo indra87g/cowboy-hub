@@ -79,6 +79,7 @@ Wilayah Penjahat:
 ```
 
 Langkah: {state['step_count']} | Titik tersedia: {state['available_space']}
+Pemenang: {state['last_winner']}
 
 ## Cara Bermain
 
