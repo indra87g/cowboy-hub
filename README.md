@@ -4,13 +4,17 @@ Ini adalah permainan Koboy sederhana yang berjalan di GitHub melalui GitHub Acti
 
 ## Status Permainan Terkini
 
+
+
 ```
 Wilayah Koboy:
-. . . . . K
+. . . . K .
 
 Wilayah Penjahat:
-. P . . . .
+P . . . . .
 ```
+
+Langkah: 1 | Titik tersedia: 6
 
 ## Cara Bermain
 
@@ -32,3 +36,4 @@ Wilayah Penjahat:
 
 (Histori akan direset setelah 50 entri)
 
+- @indra87g (Koboy) - Kiri
