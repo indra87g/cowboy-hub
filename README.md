@@ -11,10 +11,10 @@ Wilayah Koboy:
 . . K . . .
 
 Wilayah Penjahat:
-. . . P . .
+. . . . P .
 ```
 
-Langkah: 20 | Titik tersedia: 6
+Langkah: 21 | Titik tersedia: 6
 
 ## Cara Bermain
 
@@ -36,6 +36,7 @@ Langkah: 20 | Titik tersedia: 6
 
 (Histori akan direset setelah 50 entri)
 
+- @Zaxerion (Penjahat) - Kiri
 - @Zaxerion (Penjahat) - Kiri
 - @Zaxerion (Koboy) - Kanan
 - @Zaxerion (Koboy) - Kanan
