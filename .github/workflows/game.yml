@@ -1,0 +1,47 @@
+name: Koboy Game Workflow
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  process-game:
+    if: startsWith(github.event.issue.title, '[MAIN]')
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    permissions:
+      issues: write
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Process game move
+        run: |
+          python .github/scripts/game_processor.py "${{ github.event.issue.title }}" "${{ github.event.issue.user.login }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md game_state.json
+          git commit -m "Update game state from issue #${{ github.event.issue.number }}" || echo "No changes to commit"
+          git push
+
+      - name: Close issue
+        uses: peter-evans/close-issue@v2
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          comment: |
+            Terima kasih sudah bermain! Permainan telah diupdate.
+            
+            Kunjungi README.md untuk melihat status permainan terkini.
