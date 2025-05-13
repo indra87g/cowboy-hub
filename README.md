@@ -14,7 +14,7 @@ Wilayah Penjahat:
 P . . . . .
 ```
 
-Langkah: 9 | Titik tersedia: 6
+Langkah: 10 | Titik tersedia: 6
 
 ## Cara Bermain
 
@@ -36,6 +36,7 @@ Langkah: 9 | Titik tersedia: 6
 
 (Histori akan direset setelah 50 entri)
 
+- @sweeefff (Penjahat) - Kiri
 - @rafiedotid (Koboy) - Kiri
 - @sweeefff (Koboy) - Kanan
 - @MrTakt (Penjahat) - Kiri
