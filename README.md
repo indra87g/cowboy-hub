@@ -11,10 +11,10 @@ Wilayah Koboy:
 . . . K . .
 
 Wilayah Penjahat:
-. P . . . .
+P . . . . .
 ```
 
-Langkah: 6 | Titik tersedia: 6
+Langkah: 7 | Titik tersedia: 6
 
 ## Cara Bermain
 
@@ -36,6 +36,7 @@ Langkah: 6 | Titik tersedia: 6
 
 (Histori akan direset setelah 50 entri)
 
+- @MrTakt (Penjahat) - Kiri
 - @TheFahmi (Koboy) - Kiri
 - @indra87g (Koboy) - Kanan
 - @indra87g (Koboy) - Kiri
