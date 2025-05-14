@@ -6,7 +6,7 @@ on:
 
 jobs:
   process-game:
-    if: startsWith(github.event.issue.title, '[MAIN]')
+    if: startsWith(github.event.issue.title, '[PLAY]')
     runs-on: ubuntu-latest
     environment:
       name: production
@@ -42,6 +42,6 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           comment: |
-            Terima kasih sudah bermain! Permainan telah diupdate.
+            Thanks for playing! The game has been updated.
             
-            Kunjungi README.md untuk melihat status permainan terkini.
+            Visit README.md to see the current status of the game.
