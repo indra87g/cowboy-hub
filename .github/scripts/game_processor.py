@@ -42,13 +42,13 @@ def update_readme(state):
     # Generate board visualization
     cowboy_area = ['.'] * state['available_space']
     if 0 <= state['cowboy_pos'] < state['available_space']:
-        cowboy_area[state['cowboy_pos']] = 'K'
+        cowboy_area[state['cowboy_pos']] = '🤠'
     if 0 <= state['bomb_pos'] < state['available_space']:
-        cowboy_area[state['bomb_pos']] = 'B'
+        cowboy_area[state['bomb_pos']] = '💣'
     
     bandit_area = ['.'] * state['available_space']
     if 0 <= state['bandit_pos'] < state['available_space']:
-        bandit_area[state['bandit_pos']] = 'P'
+        bandit_area[state['bandit_pos']] = '😈'
     
     # Game status message
     status_message = ""
@@ -90,11 +90,11 @@ Step(s): {state['step_count']} | Available point: {state['available_space']} | L
 
 ## Game Rules
 
-- Cowboy and Outlaw take turns stepping to the left and right
+- Cowboy and Bandit take turns stepping to the left and right
 - Each step can generate a new point (maximum 6 points)
 - A bomb will appear randomly in the Cowboy's area
 - If the Cowboy is hit by a bomb, the Cowboy loses
-- If the Cowboy is aligned with the Outlaw, the Cowboy wins
+- If the Cowboy is aligned with the Bandit, the Cowboy wins
 
 ## Player History
 
