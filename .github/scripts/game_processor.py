@@ -53,53 +53,52 @@ def update_readme(state):
     # Game status message
     status_message = ""
     if state["game_over"]:
-        if state["last_winner"] == "Koboy":
-            status_message = "🎉 Koboy menang! Permainan telah direset."
+        if state["last_winner"] == "Cowboy":
+            status_message = "🎉 Cowboy win! The game has been reset."
         else:
-            status_message = "💥 Koboy kalah terkena bom! Permainan telah direset."
+            status_message = "💥 Cowboy lost to the bomb! The game has been reset."
     
     # Format the history
     history_text = "\n".join([f"- @{entry['user']} ({entry['role']}) - {entry['move']}" for entry in state["history"]])
     
     # Create README content
-    readme_content = f"""# Koboy Game
+    readme_content = f"""# Cowboy Game
 
-Ini adalah permainan Koboy sederhana yang berjalan di GitHub melalui GitHub Actions. Silakan bermain dengan membuat issue baru!
+This is a simple Cowboy game running on GitHub via GitHub Actions. Feel free to play by creating a new issue.
 
-## Status Permainan Terkini
+## Latest Game Status
 
 {status_message}
 
 ```
-Wilayah Koboy:
+Cowboy Region:
 {' '.join(cowboy_area)}
 
-Wilayah Penjahat:
+Bandit Region:
 {' '.join(bandit_area)}
 ```
 
-Langkah: {state['step_count']} | Titik tersedia: {state['available_space']}
-Pemenang: {state['last_winner']}
+Step(s): {state['step_count']} | Available point: {state['available_space']} | Last Winner: {state['last_winner']}
 
-## Cara Bermain
+## How to Play
 
-1. Buat issue baru dengan judul: `[MAIN] <peran> - <langkah>`
-   - Contoh: `[MAIN] Koboy - Kiri` atau `[MAIN] Penjahat - Kanan`
-2. Peran yang tersedia: `Koboy` atau `Penjahat`
-3. Langkah yang tersedia: `Kiri` atau `Kanan`
-4. Permainan akan diupdate setelah issue dibuat
+1. Create a new issue with the title: `[PLAY] <role> - <step>`
+   - Example: `[PLAY] Cowboy - Left` or `[PLAY] Bandit - Right`
+2. Available roles: `Cowboy` or `Bandit`
+3. Available steps: `Left` or `Right`
+4. The game will be updated after the issue is created
 
-## Aturan Permainan
+## Game Rules
 
-- Koboy dan Penjahat melangkah ke kiri dan kanan secara bergantian
-- Setiap langkah dapat memunculkan titik baru (maksimal 6 titik)
-- Bom akan muncul secara random di wilayah Koboy
-- Jika Koboy terkena bom, Koboy kalah
-- Jika Koboy sejajar dengan Penjahat, Koboy menang
+- Cowboy and Outlaw take turns stepping to the left and right
+- Each step can generate a new point (maximum 6 points)
+- A bomb will appear randomly in the Cowboy's area
+- If the Cowboy is hit by a bomb, the Cowboy loses
+- If the Cowboy is aligned with the Outlaw, the Cowboy wins
 
-## Histori Pemain
+## Player History
 
-(Histori akan direset setelah 50 entri)
+(History will be reset after 50 entries)
 
 {history_text}
 """
@@ -110,7 +109,7 @@ Pemenang: {state['last_winner']}
 def process_move(title, username):
     """Process a move from a GitHub issue"""
     # Parse issue title: [MAIN] <role> - <move>
-    match = re.match(r'\[MAIN\]\s*(Koboy|Penjahat)\s*-\s*(Kiri|Kanan)', title, re.IGNORECASE)
+    match = re.match(r'\[PLAY\]\s*(Cowboy|Bandit)\s*-\s*(Left|Right)', title, re.IGNORECASE)
     if not match:
         print("Invalid issue format")
         return
@@ -127,9 +126,9 @@ def process_move(title, username):
         state["history"] = state["history"][:MAX_HISTORY]
     
     # Process move
-    if role == "Koboy":
+    if role == "Cowboy":
         process_cowboy_move(state, move)
-    else:  # Penjahat
+    else:  # Bandit
         process_bandit_move(state, move)
     
     # Check win/lose conditions
@@ -142,9 +141,9 @@ def process_move(title, username):
 def process_cowboy_move(state, move):
     """Process a cowboy (player) move"""
     # Move cowboy
-    if move == "kiri" and state["cowboy_pos"] > 0:
+    if move == "left" and state["cowboy_pos"] > 0:
         state["cowboy_pos"] -= 1
-    elif move == "kanan" and state["cowboy_pos"] < state["available_space"] - 1:
+    elif move == "right" and state["cowboy_pos"] < state["available_space"] - 1:
         state["cowboy_pos"] += 1
     
     state["step_count"] += 1
@@ -163,9 +162,9 @@ def process_cowboy_move(state, move):
 def process_bandit_move(state, move):
     """Process a bandit (enemy) move"""
     # Move bandit based on explicit move command
-    if move == "kiri" and state["bandit_pos"] > 0:
+    if move == "left" and state["bandit_pos"] > 0:
         state["bandit_pos"] -= 1
-    elif move == "kanan" and state["bandit_pos"] < state["available_space"] - 1:
+    elif move == "right" and state["bandit_pos"] < state["available_space"] - 1:
         state["bandit_pos"] += 1
     
     state["step_count"] += 1
@@ -186,13 +185,13 @@ def check_game_conditions(state):
     # Check if cowboy hits bomb
     if state["cowboy_pos"] == state["bomb_pos"] and state["bomb_pos"] != -1:
         state["game_over"] = True
-        state["last_winner"] = "Penjahat"
+        state["last_winner"] = "Bandit"
         reset_game(state)
     
     # Check if cowboy and bandit align
     if state["cowboy_pos"] == state["bandit_pos"]:
         state["game_over"] = True
-        state["last_winner"] = "Koboy"
+        state["last_winner"] = "Cowboy"
         reset_game(state)
 
 def reset_game(state):
@@ -203,7 +202,7 @@ def reset_game(state):
     state["steps_to_bomb"] = state["step_count"] + random.randint(3, 6)
     
     # If cowboy won, move bandit 2 steps
-    if state["last_winner"] == "Koboy":
+    if state["last_winner"] == "Cowboy":
         # Try to move bandit 2 steps away
         if state["bandit_pos"] + 2 < state["available_space"]:
             state["bandit_pos"] += 2
