@@ -1,42 +1,42 @@
-# Koboy Game
+# Cowboy Game
 
-Ini adalah permainan Koboy sederhana yang berjalan di GitHub melalui GitHub Actions. Silakan bermain dengan membuat issue baru!
+This is a simple Cowboy game running on GitHub via GitHub Actions. Feel free to play by creating a new issue.
 
-## Status Permainan Terkini
+## Latest Game Status
 
 
 
 ```
-Wilayah Koboy:
-. . K . . .
+Cowboy Region:
+. . . K . .
 
-Wilayah Penjahat:
+Bandit Region:
 . . . . . P
 ```
 
-Langkah: 30 | Titik tersedia: 6
-Pemenang: Koboy
+Step(s): 31 | Available point: 6 | Last Winner: Koboy
 
-## Cara Bermain
+## How to Play
 
-1. Buat issue baru dengan judul: `[MAIN] <peran> - <langkah>`
-   - Contoh: `[MAIN] Koboy - Kiri` atau `[MAIN] Penjahat - Kanan`
-2. Peran yang tersedia: `Koboy` atau `Penjahat`
-3. Langkah yang tersedia: `Kiri` atau `Kanan`
-4. Permainan akan diupdate setelah issue dibuat
+1. Create a new issue with the title: `[PLAY] <role> - <step>`
+   - Example: `[PLAY] Cowboy - Left` or `[PLAY] Bandit - Right`
+2. Available roles: `Cowboy` or `Bandit`
+3. Available steps: `Left` or `Right`
+4. The game will be updated after the issue is created
 
-## Aturan Permainan
+## Game Rules
 
-- Koboy dan Penjahat melangkah ke kiri dan kanan secara bergantian
-- Setiap langkah dapat memunculkan titik baru (maksimal 6 titik)
-- Bom akan muncul secara random di wilayah Koboy
-- Jika Koboy terkena bom, Koboy kalah
-- Jika Koboy sejajar dengan Penjahat, Koboy menang
+- Cowboy and Outlaw take turns stepping to the left and right
+- Each step can generate a new point (maximum 6 points)
+- A bomb will appear randomly in the Cowboy's area
+- If the Cowboy is hit by a bomb, the Cowboy loses
+- If the Cowboy is aligned with the Outlaw, the Cowboy wins
 
-## Histori Pemain
+## Player History
 
-(Histori akan direset setelah 50 entri)
+(History will be reset after 50 entries)
 
+- @indra87g (Cowboy) - Right
 - @indra87g (Penjahat) - Kanan
 - @Zaxerion (Koboy) - Kiri
 - @Zaxerion (Penjahat) - Kanan
