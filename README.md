@@ -8,13 +8,13 @@ This is a simple Cowboy game running on GitHub via GitHub Actions. Feel free to 
 
 ```
 Cowboy Region:
-. . . K . .
+. . . . 🤠 .
 
 Bandit Region:
-. . . . . P
+. . . . . 😈
 ```
 
-Step(s): 31 | Available point: 6 | Last Winner: Koboy
+Step(s): 32 | Available point: 6 | Last Winner: Koboy
 
 ## How to Play
 
@@ -26,16 +26,17 @@ Step(s): 31 | Available point: 6 | Last Winner: Koboy
 
 ## Game Rules
 
-- Cowboy and Outlaw take turns stepping to the left and right
+- Cowboy and Bandit take turns stepping to the left and right
 - Each step can generate a new point (maximum 6 points)
 - A bomb will appear randomly in the Cowboy's area
 - If the Cowboy is hit by a bomb, the Cowboy loses
-- If the Cowboy is aligned with the Outlaw, the Cowboy wins
+- If the Cowboy is aligned with the Bandit, the Cowboy wins
 
 ## Player History
 
 (History will be reset after 50 entries)
 
+- @indra87g (Cowboy) - Right
 - @indra87g (Cowboy) - Right
 - @indra87g (Penjahat) - Kanan
 - @Zaxerion (Koboy) - Kiri
