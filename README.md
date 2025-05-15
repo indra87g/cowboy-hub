@@ -11,10 +11,10 @@ Cowboy Region:
 . . . . . 🤠
 
 Bandit Region:
-. . . 😈 . .
+. . . . 😈 .
 ```
 
-Step(s): 33 | Available point: 6 | Last Winner: Cowboy
+Step(s): 34 | Available point: 6 | Last Winner: Cowboy
 
 ## How to Play
 
@@ -36,6 +36,7 @@ Step(s): 33 | Available point: 6 | Last Winner: Cowboy
 
 (History will be reset after 50 entries)
 
+- @Zaxerion (Bandit) - Right
 - @MuhammadRestu999 (Cowboy) - Right
 - @indra87g (Cowboy) - Right
 - @indra87g (Cowboy) - Right
