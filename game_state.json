@@ -1,14 +1,19 @@
 {
-  "cowboy_pos": 5,
+  "cowboy_pos": 4,
   "bandit_pos": 3,
   "bomb_pos": -1,
   "bomb_timer": 0,
   "steps_to_bomb": 41,
-  "step_count": 35,
+  "step_count": 36,
   "available_space": 6,
   "game_over": false,
   "last_winner": "Cowboy",
   "history": [
+    {
+      "user": "indra87g",
+      "role": "Cowboy",
+      "move": "Left"
+    },
     {
       "user": "Zaxerion",
       "role": "Bandit",
