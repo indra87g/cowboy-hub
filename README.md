@@ -8,13 +8,13 @@ This is a simple Cowboy game running on GitHub via GitHub Actions. Feel free to 
 
 ```
 Cowboy Region:
-. . . . . 🤠
+🤠 . . . . .
 
 Bandit Region:
 . . . 😈 . .
 ```
 
-Step(s): 39 | Available point: 6 | Last Winner: Cowboy
+Step(s): 40 | Available point: 6 | Last Winner: Bandit
 
 ## How to Play
 
@@ -36,6 +36,7 @@ Step(s): 39 | Available point: 6 | Last Winner: Cowboy
 
 (History will be reset after 50 entries)
 
+- @test-user (Bandit) - Shoot
 - @zinzui12345 (Cowboy) - Right
 - @zinzui12345 (Cowboy) - Right
 - @indra87g (Cowboy) - Left
