@@ -55,6 +55,8 @@ def update_readme(state):
     if state["game_over"]:
         if state["last_winner"] == "Cowboy":
             status_message = "🎉 Cowboy win! The game has been reset."
+        elif state.get("win_reason") == "shoot":
+            status_message = "🎯 Bandit shot the Cowboy! The game has been reset."
         else:
             status_message = "💥 Cowboy lost to the bomb! The game has been reset."
     
@@ -108,14 +110,19 @@ Step(s): {state['step_count']} | Available point: {state['available_space']} | L
 
 def process_move(title, username):
     """Process a move from a GitHub issue"""
-    # Parse issue title: [MAIN] <role> - <move>
-    match = re.match(r'\[PLAY\]\s*(Cowboy|Bandit)\s*-\s*(Left|Right)', title, re.IGNORECASE)
+    # Parse issue title: [PLAY] <role> - <move>
+    match = re.match(r'\[PLAY\]\s*(Cowboy|Bandit)\s*-\s*(Left|Right|Shoot)', title, re.IGNORECASE)
     if not match:
         print("Invalid issue format")
         return
     
     role = match.group(1).capitalize()
     move = match.group(2).lower()
+
+    # Prevent Cowboy from shooting
+    if role == "Cowboy" and move == "shoot":
+        print("Invalid move: Cowboy cannot shoot.")
+        return
     
     # Load game state
     state = load_game_state()
@@ -132,7 +139,7 @@ def process_move(title, username):
         process_bandit_move(state, move)
     
     # Check win/lose conditions
-    check_game_conditions(state)
+    check_game_conditions(state, role, move)
     
     # Save state and update README
     save_game_state(state)
@@ -166,6 +173,7 @@ def process_bandit_move(state, move):
         state["bandit_pos"] -= 1
     elif move == "right" and state["bandit_pos"] < state["available_space"] - 1:
         state["bandit_pos"] += 1
+    # If move is "shoot", do not move the bandit
     
     state["step_count"] += 1
     
@@ -180,13 +188,24 @@ def process_bandit_move(state, move):
             state["bomb_pos"] = -1
             state["steps_to_bomb"] = state["step_count"] + random.randint(3, 6)
 
-def check_game_conditions(state):
+def check_game_conditions(state, role, move):
     """Check win/lose conditions"""
+    state["win_reason"] = None # Reset win reason
+
     # Check if cowboy hits bomb
     if state["cowboy_pos"] == state["bomb_pos"] and state["bomb_pos"] != -1:
         state["game_over"] = True
         state["last_winner"] = "Bandit"
         reset_game(state)
+        return
+
+    # Check if bandit shoots cowboy
+    if role == "Bandit" and move == "shoot" and state["cowboy_pos"] == state["bandit_pos"]:
+        state["game_over"] = True
+        state["last_winner"] = "Bandit"
+        state["win_reason"] = "shoot"
+        reset_game(state)
+        return
     
     # Check if cowboy and bandit align
     if state["cowboy_pos"] == state["bandit_pos"]:
@@ -213,6 +232,11 @@ def reset_game(state):
             possible_pos = [i for i in range(state["available_space"]) if abs(i - state["cowboy_pos"]) >= 2]
             if possible_pos:
                 state["bandit_pos"] = random.choice(possible_pos)
+    elif state["last_winner"] == "Bandit":
+        # Move cowboy to a random position that is not the bandit's position
+        possible_pos = [i for i in range(state["available_space"]) if i != state["bandit_pos"]]
+        if possible_pos:
+            state["cowboy_pos"] = random.choice(possible_pos)
     
     # Reset game over flag
     state["game_over"] = False
