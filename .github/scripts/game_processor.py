@@ -76,9 +76,12 @@ Bandit Region:
 {' '.join(bandit_area)}
 ```
 
-Status: { status_message or None }
+Status: { status_message or None } 
+
 Step(s): {state['step_count']}
+
 Available space: {state['available_space']}
+
 Last Winner: {state['last_winner']}
 
 ## How to Play
