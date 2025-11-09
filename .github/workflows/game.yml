@@ -1,4 +1,4 @@
-name: Koboy Game Workflow
+name: Cowboy Hub Workflow
 
 on:
   issues:
@@ -21,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
       - name: Process game move
         run: |
@@ -43,5 +43,8 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           comment: |
             Thanks for playing! The game has been updated.
+            Don't forget to leave a star or fork this repository😊
             
             Visit README.md to see the current status of the game.
+          labels: play
+          close-reason: completed
