@@ -5,7 +5,7 @@ import re
 import sys
 
 # Constants
-MAX_SPACE = 6
+MAX_SPACE = 8
 MAX_HISTORY = 50
 
 # Game state file
@@ -20,13 +20,13 @@ def load_game_state():
     else:
         # Default initial state
         return {
-            "cowboy_pos": 5,
+            "cowboy_pos": 7,
             "bandit_pos": 0,
             "bomb_pos": -1,
             "bomb_timer": 0,
-            "steps_to_bomb": random.randint(3, 6),
+            "steps_to_bomb": random.randint(3, 7),
             "step_count": 0,
-            "available_space": 6,
+            "available_space": 8,
             "game_over": False,
             "last_winner": None,
             "history": []
@@ -48,7 +48,7 @@ def update_readme(state):
     
     bandit_area = ['.'] * state['available_space']
     if 0 <= state['bandit_pos'] < state['available_space']:
-        bandit_area[state['bandit_pos']] = '😈'
+        bandit_area[state['bandit_pos']] = '😡'
     
     # Game status message
     status_message = ""
@@ -62,13 +62,11 @@ def update_readme(state):
     history_text = "\n".join([f"- @{entry['user']} ({entry['role']}) - {entry['move']}" for entry in state["history"]])
     
     # Create README content
-    readme_content = f"""# Cowboy Game
+    readme_content = f"""# Cowboy Hub
 
 This is a simple Cowboy game running on GitHub via GitHub Actions. Feel free to play by creating a new issue.
 
 ## Latest Game Status
-
-{status_message}
 
 ```
 Cowboy Region:
@@ -78,7 +76,10 @@ Bandit Region:
 {' '.join(bandit_area)}
 ```
 
-Step(s): {state['step_count']} | Available point: {state['available_space']} | Last Winner: {state['last_winner']}
+Status: { status_message or None }
+Step(s): {state['step_count']}
+Available space: {state['available_space']}
+Last Winner: {state['last_winner']}
 
 ## How to Play
 
