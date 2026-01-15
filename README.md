@@ -9,12 +9,12 @@ Cowboy Region:
 . . . . 🤠 . .
 
 Bandit Region:
-. . . . . 😡 .
+. . . . . . 😡
 ```
 
 Status: None 
 
-Step(s): 45
+Step(s): 46
 
 Available space: 7
 
@@ -40,6 +40,7 @@ Last Winner: Cowboy
 
 (History will be reset after 50 entries)
 
+- @indra87g (Bandit) - Right
 - @MuhammadRestu999 (Cowboy) - Right
 - @indra87g (Cowboy) - Left
 - @indra87g (Bandit) - Right
